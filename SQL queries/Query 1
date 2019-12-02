@@ -1,0 +1,22 @@
+USE [timetable-live] 
+GO 
+ 
+SELECT 
+Event.Start, 
+Event.[End], 
+Event.Subject, 
+Event.LocationsDisplayText, 
+Location.AdditionalInfo, 
+SapRoomKind.Name, 
+Location.Capacity, 
+ContingentUnit.StudentGroupsString, 
+EducatorMasterPerson.FirstNameEnglish, 
+EducatorMasterPerson.LastNameEnglish 
+FROM Event, Location, SapRoomKind, ContingentUnit, EventLocation, EducatorMasterPerson, EducatorAssignmentUnit,EducatorEmployment 
+WHERE 
+ContingentUnit.Oid = Event.ContingentUnit and 
+EventLocation.Event=Event.Oid and EventLocation.Location = Location.Oid and 
+Location.SapRoomKind = SapRoomKind.Oid 
+and Event.EducatorAssignment = EducatorAssignmentUnit.EducatorAssignment 
+and EducatorAssignmentUnit.EducatorEmployment = EducatorEmployment.Oid 
+and EducatorEmployment.EducatorMasterPerson=EducatorMasterPerson.Oid
