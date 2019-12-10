@@ -1,0 +1,8 @@
+-- Creates the login AbolrousHazem with password '340$Uuxwp7Mcxo7Khy'.  
+CREATE LOGIN elk_user   
+    WITH PASSWORD = '340$Uuxwp7Mcxo7Khy';  
+GO  
+
+-- Creates a database user for the login created above.  
+CREATE USER elk_user FOR LOGIN elk_user;  
+GO  
