@@ -1,0 +1,2 @@
+USE [timetable-live]
+ALTER TABLE Event ADD id_log bigint identity
